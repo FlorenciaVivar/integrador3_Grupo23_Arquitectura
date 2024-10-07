@@ -6,22 +6,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tp3.integrador3_grupo23_arqui.model.Carrera;
-import tp3.integrador3_grupo23_arqui.model.Estudiante;
-import tp3.integrador3_grupo23_arqui.repository.EstudianteRepository;
+import tp3.integrador3_grupo23_arqui.repository.CarreraRepository;
+import tp3.integrador3_grupo23_arqui.repository.EstudianteCarreraRepository;
 
 @RestController
-@RequestMapping("estudiante")
-public class EstudianteControllerJpa {
-    @Qualifier("estudianteRepository")
+@RequestMapping("carrera")
+public class CarreraControllerJpa {
+    @Qualifier("carreraRepository")
 
-    private final EstudianteRepository repository;
+    private final CarreraRepository repository;
     @Autowired
-    public EstudianteControllerJpa(@Qualifier("estudianteRepository") EstudianteRepository repository) {
+    public CarreraControllerJpa(@Qualifier("carreraRepository") CarreraRepository repository) {
         this.repository = repository;
     }
-    //GEt todos los estudaintes
+
+    //GET todas las carreras
     @GetMapping("/")
-    public Iterable<Estudiante> getEstudiante() {
+    public Iterable<Carrera> getCarrera() {
         return repository.findAll();
     }
 
