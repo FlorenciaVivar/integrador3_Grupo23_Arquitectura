@@ -1,12 +1,16 @@
 package tp3.integrador3_grupo23_arqui.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Estudiante {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -41,19 +45,19 @@ public class Estudiante {
     @OneToMany(mappedBy = "estudiante")
     private List<EstudianteCarrera> carreras;/*Un estudiante tiene 1 o + carreras cursadas*/
                 /*Tipo EstudianteCarrera, ya que es la tabla realacion*/
-    public Estudiante(String nombre, String apellido, int edad, String genero, int DNI, Long numLegajo, String ciudad, int antiguedadEnCarrera) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.edad = edad;
-        this.genero = genero;
-        this.DNI = DNI;
-        this.numLegajo = numLegajo;
-        this.ciudad = ciudad;
-        this.antiguedadEnCarrera = antiguedadEnCarrera;
-        this.carreras = new ArrayList<>();
-    }
-
-    public Estudiante() {}
+//    public Estudiante(String nombre, String apellido, int edad, String genero, int DNI, Long numLegajo, String ciudad, int antiguedadEnCarrera) {
+//        this.nombre = nombre;
+//        this.apellido = apellido;
+//        this.edad = edad;
+//        this.genero = genero;
+//        this.DNI = DNI;
+//        this.numLegajo = numLegajo;
+//        this.ciudad = ciudad;
+//        this.antiguedadEnCarrera = antiguedadEnCarrera;
+//        this.carreras = new ArrayList<>();
+//    }
+//
+//    public Estudiante() {}
 
     public int getAntiguedadEnCarrera() {
         return antiguedadEnCarrera;
