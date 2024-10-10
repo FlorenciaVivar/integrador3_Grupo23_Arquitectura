@@ -33,6 +33,7 @@ public class Carrera {
         return idCarrera;
     }
 
+
     public String getNombre() {
         return nombre;
     }

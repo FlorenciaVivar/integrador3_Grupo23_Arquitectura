@@ -35,15 +35,7 @@ public class EstudianteCarrera {
     @Column(nullable = true)
     private LocalDate fechaGraduacion;
 
-//    public EstudianteCarrera(){
 
-//    public EstudianteCarrera(Carrera carrera, Estudiante estudiante, LocalDate fechaComienzo, boolean estaGraduado, LocalDate fechaGraduacion) {
-//        this.carrera = carrera;
-//        this.estudiante = estudiante;
-//        this.fechaComienzo = fechaComienzo;
-//        this.estaGraduado = estaGraduado;
-//        this.fechaGraduacion = fechaGraduacion;
-//    }
 
     public Integer getIdEstudianteCarrera(){
         return this.idEstudianteCarrera;
