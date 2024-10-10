@@ -13,7 +13,16 @@ public interface CarreraRepository extends JpaRepository<Carrera, Integer> {
     @Query("SELECT c FROM Carrera c JOIN EstudianteCarrera ec ON c.idCarrera = ec.carrera.idCarrera WHERE ec.estudiante.idEstudiante = :id")
     Iterable<Carrera> findCarrerasByIdEstudiante(@Param("id") int id);
 
-//    //f) recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad de inscriptos.
+
+
+    @Query("SELECT c FROM Carrera c WHERE c.idCarrera = :id")
+    Iterable<Carrera> findById(@Param("id") int id);
+    //    //f) recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad de inscriptos.
+    // Revisar la query
+    @Query("SELECT count(ec.idEstudianteCarrera)FROM Carrera c JOIN EstudianteCarrera ec WHERE c.idCarrera = ec.carrera.idCarrera ")
+    Iterable<Carrera>findCarrerasByEstudiantesOrdenada();
+
+
 //    @Query("SELECT new tp3.integrador3_grupo23_arqui.dto.EstudianteCarreraDTO("
 //            + "ec.carrera.idCarrera, "
 //            + "ec.carrera.nombre, "
