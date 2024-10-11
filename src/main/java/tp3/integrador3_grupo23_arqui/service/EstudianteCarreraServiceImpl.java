@@ -68,8 +68,18 @@ public class EstudianteCarreraServiceImpl implements EstudianteCarreraService{
     }
 
     @Override
-    public void delete(Integer estudianteId, Integer carreraId) {
-        // TODO Auto-generated method stub
+    public void delete(EstudianteCarreraRequestDTO ecDTO) {
+        Carrera carrera = this.carreraRepository.findById(ecDTO.getIdCarrera()).orElseThrow(() -> new RuntimeException("Carrera no encontrada"));
 
+        Estudiante estudiante = this.estudianteRepository.findById(ecDTO.getIdEstudiante()).orElseThrow(() -> new RuntimeException("Estudiante no encontrado"));
+
+        EstudianteCarrera ec = this.repository.findByCarreraAndEstudiante(carrera, estudiante).orElseThrow(() -> new RuntimeException("EstudianteCarrera no encontrada"));
+
+        this.repository.delete(ec);
+    }
+
+    @Override
+    public Iterable<EstudianteCarrera> findByCarrerAndCiudad(String nombreCarrera, String ciudad) {
+        return this.repository.findEstudiantesByCarreraAndCiudad(nombreCarrera, ciudad);
     }
 }

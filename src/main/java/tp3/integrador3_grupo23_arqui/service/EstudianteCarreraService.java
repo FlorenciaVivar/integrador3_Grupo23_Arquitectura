@@ -12,6 +12,7 @@ public interface EstudianteCarreraService {
 
     void create(EstudianteCarreraRequestDTO ecDTO);
 
-    void delete(Integer estudianteId, Integer carreraId);
+    void delete(EstudianteCarreraRequestDTO ecDTO);
 
+    Iterable<EstudianteCarrera> findByCarrerAndCiudad(String nombreCarrera, String ciudad);
 }
