@@ -2,6 +2,7 @@ package tp3.integrador3_grupo23_arqui.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import static jakarta.persistence.GenerationType.AUTO;
 
 @Entity
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class EstudianteCarrera {

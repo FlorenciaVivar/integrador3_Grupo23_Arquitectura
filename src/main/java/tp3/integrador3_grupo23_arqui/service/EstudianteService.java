@@ -23,6 +23,19 @@ public class EstudianteService {
         estudiante.setIdEstudiante(idEstudiante);
         return estudianteRepository.save(estudiante);
     }
+    //(C) recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple.
+    public Iterable<Estudiante> buscarEstudiantePorNombre(String nombre){
+        return estudianteRepository.buscarEstudiantePorNombre(nombre);
+    }
+    //(D) recuperar un estudiante, en base a su número de libreta universitaria.
+    public Estudiante buscarEstudianteNumLibreta(Long libreta){
+        return estudianteRepository.buscarEstudiantePorLibreta(libreta);
+    }
+    //(E) recuperar todos los estudiantes, en base a su género.
+    public Iterable<Estudiante> buscarEstudiantesPorGenero(String genero){
+        return estudianteRepository.buscarEstudiantePorGenero(genero);
+    }
+
     @Transactional
     public void eliminarEstudiante(Integer idEstudiante){
         estudianteRepository.deleteById(idEstudiante);

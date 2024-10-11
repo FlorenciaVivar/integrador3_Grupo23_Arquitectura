@@ -14,10 +14,6 @@ public class CarreraControllerJpa {
 
     @Autowired
     private  CarreraService Servicio;
-
-
-
-
     //GET todas las carreras
     //  @GetMapping("/")
     //   public Iterable<Carrera> getCarrera() {
@@ -43,5 +39,4 @@ public class CarreraControllerJpa {
     //     repository.deleteById(id);
     //  }
 //
-
 }

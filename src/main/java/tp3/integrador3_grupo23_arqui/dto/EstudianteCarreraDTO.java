@@ -6,20 +6,23 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class EstudianteCarreraDTO {
-    private int idEstudiante;
-    private int idCarrera;
-    private String carreraNombre;
-    private Long cantEstudiantes;
+//@Data
+//@AllArgsConstructor
+//@NoArgsConstructor
 
-    @Override
-    public String toString() {
-        return "EstudianteCarreraDTO{" +
-                "carreraNombre='" + carreraNombre + '\'' +
-                ", cantEstudiantes=" + cantEstudiantes +
-                '}';
-    }
+/*SE DIVIDIO EN REQUEST Y RESPONSE*/
+
+//public class EstudianteCarreraDTO {
+//    private int idEstudiante;
+//    private int idCarrera;
+//    private String carreraNombre;
+//    private Long cantEstudiantes;
+//
+//    @Override
+//    public String toString() {
+//        return "EstudianteCarreraDTO{" +
+//                "carreraNombre='" + carreraNombre + '\'' +
+//                ", cantEstudiantes=" + cantEstudiantes +
+//                '}';
+//    }
 }
