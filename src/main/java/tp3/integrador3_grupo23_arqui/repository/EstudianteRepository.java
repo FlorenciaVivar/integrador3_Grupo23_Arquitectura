@@ -6,7 +6,7 @@ import org.springframework.data.repository.query.Param;
 import tp3.integrador3_grupo23_arqui.model.Estudiante;
 
 public interface EstudianteRepository extends JpaRepository<Estudiante,Integer > {
-    //(C)
+
     @Query("SELECT e FROM Estudiante e WHERE e.nombre = :nombre ")
     Iterable<Estudiante> buscarEstudiantePorNombre(@Param(value = "nombre") String nombre);
 
@@ -14,5 +14,5 @@ public interface EstudianteRepository extends JpaRepository<Estudiante,Integer >
     Estudiante buscarEstudiantePorLibreta(@Param(value = "libreta") Long libreta);
 
     @Query("SELECT e FROM Estudiante e WHERE e.genero = :genero")
-    Iterable<Estudiante>buscarEstudiantePorGenero(@Param(value = "genero") String genero);
+    Iterable<Estudiante>buscarEstudiantesPorGenero(@Param(value = "genero") String genero);
 }

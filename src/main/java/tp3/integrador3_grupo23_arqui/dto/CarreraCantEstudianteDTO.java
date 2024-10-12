@@ -5,12 +5,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class CarreraCantEstudianteDTO {
     private int id;
     private String nombre;
     private long cantidad;
+
+    public CarreraCantEstudianteDTO(int id, String nombre, long cantidad) {
+        this.id = id;
+        this.nombre = nombre;
+        this.cantidad = cantidad;
+    }
 
     @Override
     public String toString() {

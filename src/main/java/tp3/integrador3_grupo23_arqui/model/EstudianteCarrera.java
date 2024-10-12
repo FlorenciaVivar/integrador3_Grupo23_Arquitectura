@@ -1,17 +1,17 @@
 package tp3.integrador3_grupo23_arqui.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 import static jakarta.persistence.GenerationType.AUTO;
 
 @Entity
+@Table(name = "estudianteCarrera")
 @Data
 @Builder
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class EstudianteCarrera {
@@ -29,15 +29,15 @@ public class EstudianteCarrera {
     private Estudiante estudiante; //Relacion a estudiante
 
     @Column(nullable = false)
-    private LocalDate fechaComienzo;
+    private int fechaComienzo;
 
     @Column(nullable = false)
     private boolean estaGraduado;
 
     @Column(nullable = true)
-    private LocalDate fechaGraduacion;
+    private int fechaGraduacion;
 
-//    public EstudianteCarrera(){
+//    public EstudianteCarrera(){}
 
 //    public EstudianteCarrera(Carrera carrera, Estudiante estudiante, LocalDate fechaComienzo, boolean estaGraduado, LocalDate fechaGraduacion) {
 //        this.carrera = carrera;
@@ -59,7 +59,7 @@ public class EstudianteCarrera {
         return estudiante;
     }
 
-    public LocalDate getFechaComienzo() {
+    public int getFechaComienzo() {
         return fechaComienzo;
     }
 
@@ -67,7 +67,7 @@ public class EstudianteCarrera {
         return estaGraduado;
     }
 
-    public LocalDate getFechaGraduacion() {
+    public int getFechaGraduacion() {
         return fechaGraduacion;
     }
 }

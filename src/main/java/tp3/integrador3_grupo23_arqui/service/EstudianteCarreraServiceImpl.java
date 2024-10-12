@@ -1,6 +1,8 @@
 package tp3.integrador3_grupo23_arqui.service;
 
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+import tp3.integrador3_grupo23_arqui.dto.CarreraCantEstudianteDTO;
 import tp3.integrador3_grupo23_arqui.dto.EstudianteCarreraRequestDTO;
 import tp3.integrador3_grupo23_arqui.model.Carrera;
 import tp3.integrador3_grupo23_arqui.model.Estudiante;
@@ -10,8 +12,10 @@ import tp3.integrador3_grupo23_arqui.repository.EstudianteCarreraRepository;
 import tp3.integrador3_grupo23_arqui.repository.EstudianteRepository;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class EstudianteCarreraServiceImpl implements EstudianteCarreraService{
 
     private EstudianteCarreraRepository repository;
@@ -60,8 +64,8 @@ public class EstudianteCarreraServiceImpl implements EstudianteCarreraService{
                 .carrera(carrera)
                 .estudiante(estudiante)
                 .estaGraduado(false)
-                .fechaComienzo(LocalDate.now())
-                .fechaGraduacion(null)
+                .fechaComienzo(LocalDate.now().getYear())
+                .fechaGraduacion(0)
                 .build();
 
         this.repository.save(request);
@@ -82,4 +86,39 @@ public class EstudianteCarreraServiceImpl implements EstudianteCarreraService{
     public Iterable<EstudianteCarrera> findByCarrerAndCiudad(String nombreCarrera, String ciudad) {
         return this.repository.findEstudiantesByCarreraAndCiudad(nombreCarrera, ciudad);
     }
+
+//    @Override
+//    public Iterable<Carrera> buscarCarrerasPorNroInscriptos() {
+//        return this.repository.buscarCarrerasPorNroInscriptos();
+//    }
+
+    @Override
+    public List<CarreraCantEstudianteDTO> buscarCarrerasPorNroInscriptos() {
+        System.out.println("Iniciando búsqueda de carreras por número de inscriptos...");
+
+        List<Object[]> resultados = repository.buscarCarrerasPorNroInscriptos();
+
+        System.out.println("Cantidad de resultados obtenidos: " + resultados.size());
+
+        // Mapeo manual de Carrera a CarreraCantEstudianteDTO
+        List<CarreraCantEstudianteDTO> carrerasDTO = new ArrayList<>();
+        for (Object[] resultado : resultados) {
+            Carrera carrera = (Carrera) resultado[0];  // Entidad Carrera
+            Long cantidadEstudiantes = (Long) resultado[1];  // Conteo de estudiantes
+
+            System.out.println("Carrera: " + carrera.getNombre() + ", Cantidad de estudiantes: " + cantidadEstudiantes);
+
+            CarreraCantEstudianteDTO dto = new CarreraCantEstudianteDTO(
+                    carrera.getIdCarrera(),
+                    carrera.getNombre(),
+                    cantidadEstudiantes
+            );
+            carrerasDTO.add(dto);
+        }
+
+        System.out.println("Cantidad de carreras mapeadas a DTO: " + carrerasDTO.size());
+
+        return carrerasDTO;
+    }
+
 }

@@ -2,6 +2,7 @@ package tp3.integrador3_grupo23_arqui.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,19 +15,24 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import tp3.integrador3_grupo23_arqui.dto.EstudianteCarreraRequestDTO;
+import tp3.integrador3_grupo23_arqui.model.Carrera;
 import tp3.integrador3_grupo23_arqui.model.EstudianteCarrera;
 import tp3.integrador3_grupo23_arqui.service.EstudianteCarreraService;
 
 @RestController
-@RequestMapping("estudianteCarrera")
+@RequestMapping("/estudianteCarrera")
 public class EstudianteCarreraControllerJpa {
-
+    @Autowired
     private EstudianteCarreraService estudianteCarreraService;
 
-    public EstudianteCarreraControllerJpa(EstudianteCarreraService estudianteCarreraService) {
-        this.estudianteCarreraService = estudianteCarreraService;
+    //(b)matricular un estudiante en una carrera
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public void matricularEstudianteCarrera(EstudianteCarreraRequestDTO ecDTO) {
+        this.estudianteCarreraService.create(ecDTO);
     }
 
+    //(c) recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple
     //GET todos los estudiantesCarrera
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
@@ -35,9 +41,6 @@ public class EstudianteCarreraControllerJpa {
         return ResponseEntity.ok(this.estudianteCarreraService.findAll(sort));
     }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public void darDeAlta(EstudianteCarreraRequestDTO ecDTO) {
-        this.estudianteCarreraService.create(ecDTO);
-    }
+
+
 }

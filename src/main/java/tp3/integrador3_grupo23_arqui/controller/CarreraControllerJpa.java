@@ -2,41 +2,44 @@ package tp3.integrador3_grupo23_arqui.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tp3.integrador3_grupo23_arqui.dto.CarreraCantEstudianteDTO;
 import tp3.integrador3_grupo23_arqui.model.Carrera;
+import tp3.integrador3_grupo23_arqui.model.Estudiante;
+import tp3.integrador3_grupo23_arqui.model.EstudianteCarrera;
 import tp3.integrador3_grupo23_arqui.repository.CarreraRepository;
 import tp3.integrador3_grupo23_arqui.repository.EstudianteCarreraRepository;
 import tp3.integrador3_grupo23_arqui.service.CarreraService;
+import tp3.integrador3_grupo23_arqui.service.EstudianteCarreraService;
+import tp3.integrador3_grupo23_arqui.service.EstudianteService;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("carrera")
+@RequestMapping("/carrera")
 public class CarreraControllerJpa {
-
     @Autowired
-    private  CarreraService Servicio;
-    //GET todas las carreras
-    //  @GetMapping("/")
-    //   public Iterable<Carrera> getCarrera() {
-        //     return repository.findAll();
-        // }
-    //GET Carreras por id
-    //  @GetMapping("/{id}")
-    //   public Iterable<Carrera>  getCarreraByIid(@PathVariable int id) {
-        //     return repository.findById(id);
-    //   }
+    private EstudianteCarreraService estudianteCarreraService;
+    @Autowired
+    private CarreraService service;
 
-    // @GetMapping("/")
-    // public Carrera newCarrera(@RequestBody Carrera carrera) {
-        //     return  repository.save(carrera);
+    @GetMapping()
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<Iterable<Carrera>> getCarreras() throws Exception {
+        Iterable<Carrera> carreras = service.ObtenerCarreras();
+        return ResponseEntity.ok(carreras);
+    }
 
-    // }
-    // @PutMapping("/{id}")
-    // public void replaceCarrera(@PathVariable int id, @RequestBody Carrera carrera) {
-    //     repository.save(carrera);
-    // }
-    // @DeleteMapping(("/{id}"))
-    // public void deleteCarrera(@PathVariable int id) {
-    //     repository.deleteById(id);
-    //  }
-//
+    //(f) recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad de inscriptos.
+    @GetMapping("/byNroInscriptos")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<List<CarreraCantEstudianteDTO>> getCarrerasByNroInscriptos() {
+        List<CarreraCantEstudianteDTO> carreras = estudianteCarreraService.buscarCarrerasPorNroInscriptos();
+        return ResponseEntity.ok(carreras);
+    }
+
+
 }

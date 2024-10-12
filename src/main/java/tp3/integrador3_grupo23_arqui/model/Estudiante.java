@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 @Entity
+@Table(name = "estudiante")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -111,8 +112,16 @@ public class Estudiante {
         return DNI;
     }
 
+    public void setDNI(int DNI) {
+        this.DNI = DNI;
+    }
+
     public Long getNumLegajo() {
         return numLegajo;
+    }
+
+    public void setNumLegajo(long numLegajo) {
+        this.numLegajo = numLegajo;
     }
 
     public Integer getIdEstudiante() {
