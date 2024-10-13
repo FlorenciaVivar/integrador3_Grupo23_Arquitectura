@@ -47,12 +47,12 @@ La API `/api/estudianteCarrera` permite obtener todos los estudiantes que estudi
 
 **Uso del switch:**
   
-### "1": Ordenar por el nombre del estudiante (estudiante.nombre).
-### "2": Ordenar por el apellido del estudiante (estudiante.apellido).
-### "3": Ordenar por la fecha de comienzo de la carrera (fechaComienzo).
-### Valor por defecto: Si no se proporciona ningún valor o el valor no es válido, los resultados se ordenan por el ID de la carrera (idEstudianteCarrera).
+ "1": Ordenar por el nombre del estudiante (estudiante.nombre).
+ "2": Ordenar por el apellido del estudiante (estudiante.apellido).
+ "3": Ordenar por la fecha de comienzo de la carrera (fechaComienzo).
+ Valor por defecto: Si no se proporciona ningún valor o el valor no es válido, los resultados se ordenan por el ID de la carrera (idEstudianteCarrera).
 
-## Ejemplo de uso: GET /api/estudianteCarrera?sort=2
+### Ejemplo de uso: GET /api/estudianteCarrera?sort=2
 ---
 
 ### (D) Obtener un estudiante, en base a su número de libreta universitaria
