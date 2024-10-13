@@ -39,19 +39,15 @@ public class EstudianteCarreraServiceImpl implements EstudianteCarreraService{
     public List<EstudianteCarrera> findAll(String sort) {
         String field;
 
-        if (sort == null) {
-            field = "idEstudianteCarrera"; // Asignar valor por defecto si sort es null
-        } else {
-            switch(sort) {
-                case "1" -> field = "nombre";
-                case "2" -> field = "apellido";
-                default -> field = "idEstudianteCarrera"; // Valor por defecto
-            }
+        switch (sort) {
+            case "1" -> field = "estudiante.nombre";
+            case "2" -> field = "estudiante.apellido";
+            case "3" -> field = "fechaComienzo";
+            default -> field = "idEstudianteCarrera";
         }
 
         return this.repository.findAll(Sort.by(field));
     }
-
     @Override
     public EstudianteCarrera findById(Integer ecId) {
         return this.repository.findById(ecId).orElseThrow(() -> new RuntimeException(""));
