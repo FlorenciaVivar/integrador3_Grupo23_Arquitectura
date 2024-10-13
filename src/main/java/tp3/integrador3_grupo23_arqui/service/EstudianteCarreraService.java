@@ -16,7 +16,7 @@ public interface EstudianteCarreraService {
 
     void delete(EstudianteCarreraRequestDTO ecDTO);
 
-    Iterable<EstudianteCarrera> findByCarrerAndCiudad(String nombreCarrera, String ciudad);
+    Iterable<EstudianteCarrera> findByCarreraAndCiudad(int idCarrera, String ciudad);
 
     List<CarreraCantEstudianteDTO> buscarCarrerasPorNroInscriptos();
 }

@@ -22,14 +22,14 @@ import java.util.List;
 @RequestMapping("/carrera")
 public class CarreraControllerJpa {
     @Autowired
-    private EstudianteCarreraService estudianteCarreraService;
+    private CarreraService carreraService;
     @Autowired
-    private CarreraService service;
+    private EstudianteCarreraService estudianteCarreraService;
 
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Iterable<Carrera>> getCarreras() throws Exception {
-        Iterable<Carrera> carreras = service.ObtenerCarreras();
+        Iterable<Carrera> carreras = carreraService.ObtenerCarreras();
         return ResponseEntity.ok(carreras);
     }
 

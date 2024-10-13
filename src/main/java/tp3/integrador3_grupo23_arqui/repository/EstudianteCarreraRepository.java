@@ -12,8 +12,8 @@ import java.util.Optional;
 
 public interface EstudianteCarreraRepository extends JpaRepository<EstudianteCarrera, Integer> {
 
-    @Query("SELECT ec FROM EstudianteCarrera ec WHERE ec.carrera.nombre = :nombreCarrera AND ec.estudiante.ciudad = :ciudad")
-    Iterable<EstudianteCarrera> findEstudiantesByCarreraAndCiudad(@Param("nombreCarrera") String nombre, @Param("ciudad") String ciudad);
+    @Query("SELECT ec FROM EstudianteCarrera ec WHERE ec.carrera.idCarrera = :idCarrera AND ec.estudiante.ciudad= :ciudad")
+    Iterable<EstudianteCarrera> findEstudiantesByCarreraAndCiudad(@Param("idCarrera") int idCarrera, @Param("ciudad") String ciudad);
 
     @Query("SELECT ec FROM EstudianteCarrera ec WHERE ec.carrera = :carrera AND ec.estudiante = :estudiante")
     Optional<EstudianteCarrera> findByCarreraAndEstudiante(@Param("carrera") Carrera carrera, @Param("estudiante") Estudiante estudiante);
@@ -27,6 +27,5 @@ public interface EstudianteCarreraRepository extends JpaRepository<EstudianteCar
             "GROUP BY c.idCarrera " +
             "ORDER BY COUNT(ec.carrera.idCarrera) DESC")
     List<Object[]> buscarCarrerasPorNroInscriptos();
-
 
 }

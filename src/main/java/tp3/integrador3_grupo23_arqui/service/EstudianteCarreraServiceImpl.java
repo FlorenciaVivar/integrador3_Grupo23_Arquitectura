@@ -83,14 +83,14 @@ public class EstudianteCarreraServiceImpl implements EstudianteCarreraService{
     }
 
     @Override
-    public Iterable<EstudianteCarrera> findByCarrerAndCiudad(String nombreCarrera, String ciudad) {
-        return this.repository.findEstudiantesByCarreraAndCiudad(nombreCarrera, ciudad);
+    public Iterable<EstudianteCarrera> findByCarreraAndCiudad(int idCarrera, String ciudad) {
+        return repository.findEstudiantesByCarreraAndCiudad(idCarrera,ciudad);
     }
 
-//    @Override
-//    public Iterable<Carrera> buscarCarrerasPorNroInscriptos() {
-//        return this.repository.buscarCarrerasPorNroInscriptos();
-//    }
+    //    @Override
+    //    public Iterable<Carrera> buscarCarrerasPorNroInscriptos() {
+    //        return this.repository.buscarCarrerasPorNroInscriptos();
+    //    }
 
     @Override
     public List<CarreraCantEstudianteDTO> buscarCarrerasPorNroInscriptos() {
