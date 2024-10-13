@@ -1,5 +1,6 @@
 package tp3.integrador3_grupo23_arqui.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +22,7 @@ public class Carrera {
     private String nombre;
 
     @OneToMany(mappedBy = "carrera")
+    @JsonIgnore
     private List<EstudianteCarrera> estudiantes;
 
 //    public Carrera(){}
@@ -50,7 +52,7 @@ public class Carrera {
         return "Carrera{" +
                 "idCarrera=" + idCarrera +
                 ", nombre='" + nombre + '\'' +
-                ", estudiantes=" + estudiantes +
+//                ", estudiantes=" + estudiantes +
                 '}';
     }
 }

@@ -37,12 +37,16 @@ public class EstudianteCarreraServiceImpl implements EstudianteCarreraService{
 
     @Override
     public List<EstudianteCarrera> findAll(String sort) {
-        String field = "id";
+        String field;
 
-        switch(sort) {
-            case "1" -> field = "nombre";
-            case "2" -> field = "apellido";
-            default -> field = "id";
+        if (sort == null) {
+            field = "idEstudianteCarrera"; // Asignar valor por defecto si sort es null
+        } else {
+            switch(sort) {
+                case "1" -> field = "nombre";
+                case "2" -> field = "apellido";
+                default -> field = "idEstudianteCarrera"; // Valor por defecto
+            }
         }
 
         return this.repository.findAll(Sort.by(field));

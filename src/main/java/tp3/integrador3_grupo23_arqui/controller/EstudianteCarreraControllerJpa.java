@@ -34,11 +34,13 @@ public class EstudianteCarreraControllerJpa {
 
     //(c) recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple
     //GET todos los estudiantesCarrera
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping()
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<List<EstudianteCarrera>> getEstudianteCarrera(@RequestParam(value = "sort") String sort) {
-        return ResponseEntity.ok(this.estudianteCarreraService.findAll(sort));
+    public ResponseEntity<List<EstudianteCarrera>> getEstudianteCarrera(@RequestParam(value = "sort", required = false) String sort) {
+        List<EstudianteCarrera> estudiantesCarrera = this.estudianteCarreraService.findAll(sort);
+        System.out.println(estudiantesCarrera);
+        return ResponseEntity.ok(estudiantesCarrera);
     }
 
 

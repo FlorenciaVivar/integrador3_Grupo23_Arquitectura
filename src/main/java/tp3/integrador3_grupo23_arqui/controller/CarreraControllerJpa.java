@@ -34,7 +34,7 @@ public class CarreraControllerJpa {
     }
 
     //(f) recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad de inscriptos.
-    @GetMapping("/byNroInscriptos")
+    @GetMapping("/orderBy/cantidad")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<List<CarreraCantEstudianteDTO>> getCarrerasByNroInscriptos() {
         List<CarreraCantEstudianteDTO> carreras = estudianteCarreraService.buscarCarrerasPorNroInscriptos();
