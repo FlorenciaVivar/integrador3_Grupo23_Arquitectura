@@ -45,7 +45,7 @@ La API `/api/estudianteCarrera` permite obtener todos los estudiantes que estudi
 **Parámetros de consulta:**
 - `sort`
 
-**Uso del switch:**
+### Uso del switch:
   
  "1": Ordenar por el nombre del estudiante (estudiante.nombre).
  
