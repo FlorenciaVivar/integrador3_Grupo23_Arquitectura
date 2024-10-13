@@ -103,6 +103,8 @@ La API `/api/estudiante/search/{idCarrera}/{ciudad}` permite obtener los estudia
 - `idCarrera`
 - `ciudad`
 
+**Ejemplo de uso:** `GET /api/estudiante/search/1/Cordoba`
+
 ---
 
 ### (H) Generar un reporte de las carreras
