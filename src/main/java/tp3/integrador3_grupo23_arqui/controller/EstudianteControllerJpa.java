@@ -1,20 +1,20 @@
 package tp3.integrador3_grupo23_arqui.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tp3.integrador3_grupo23_arqui.model.Estudiante;
 import tp3.integrador3_grupo23_arqui.model.EstudianteCarrera;
+import tp3.integrador3_grupo23_arqui.service.EstudianteCarreraService;
 import tp3.integrador3_grupo23_arqui.service.EstudianteService;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/estudiante")
 public class EstudianteControllerJpa {
     @Autowired
     private EstudianteService estudianteService;
+    @Autowired
+    private EstudianteCarreraService estudianteCarreraService;
 
     //GET todos los estudiantes
     @GetMapping("")
@@ -42,6 +42,15 @@ public class EstudianteControllerJpa {
     public ResponseEntity<Iterable<Estudiante>> getEstudiantesByGenero(@PathVariable String genero) {
         return ResponseEntity.ok(this.estudianteService.buscarEstudiantesPorGenero(genero));
     }
+
+    //(g)recuperar los estudiantes de una determinada carrera, filtrado por ciudad de residencia.
+    @GetMapping("/search/{idCarrera}/{ciudad}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<Iterable<EstudianteCarrera>> getEstudiantesByCarreraAndCiudad(@PathVariable int idCarrera, @PathVariable String ciudad) {
+        return ResponseEntity.ok(this.estudianteCarreraService.findByCarreraAndCiudad(idCarrera,ciudad));
+    }
+
+
 
     @GetMapping("/{nombre}")
     public Iterable<Estudiante> getEstudiantePorNombre(@PathVariable("nombre") String nombre){
