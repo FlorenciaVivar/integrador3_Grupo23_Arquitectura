@@ -94,19 +94,12 @@ public class EstudianteCarreraServiceImpl implements EstudianteCarreraService{
 
     @Override
     public List<CarreraCantEstudianteDTO> buscarCarrerasPorNroInscriptos() {
-        System.out.println("Iniciando búsqueda de carreras por número de inscriptos...");
-
         List<Object[]> resultados = repository.buscarCarrerasPorNroInscriptos();
-
-        System.out.println("Cantidad de resultados obtenidos: " + resultados.size());
-
         // Mapeo manual de Carrera a CarreraCantEstudianteDTO
         List<CarreraCantEstudianteDTO> carrerasDTO = new ArrayList<>();
         for (Object[] resultado : resultados) {
             Carrera carrera = (Carrera) resultado[0];  // Entidad Carrera
             Long cantidadEstudiantes = (Long) resultado[1];  // Conteo de estudiantes
-
-            System.out.println("Carrera: " + carrera.getNombre() + ", Cantidad de estudiantes: " + cantidadEstudiantes);
 
             CarreraCantEstudianteDTO dto = new CarreraCantEstudianteDTO(
                     carrera.getIdCarrera(),
@@ -115,9 +108,6 @@ public class EstudianteCarreraServiceImpl implements EstudianteCarreraService{
             );
             carrerasDTO.add(dto);
         }
-
-        System.out.println("Cantidad de carreras mapeadas a DTO: " + carrerasDTO.size());
-
         return carrerasDTO;
     }
 

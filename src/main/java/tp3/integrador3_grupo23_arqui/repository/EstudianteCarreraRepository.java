@@ -18,14 +18,12 @@ public interface EstudianteCarreraRepository extends JpaRepository<EstudianteCar
     @Query("SELECT ec FROM EstudianteCarrera ec WHERE ec.carrera = :carrera AND ec.estudiante = :estudiante")
     Optional<EstudianteCarrera> findByCarreraAndEstudiante(@Param("carrera") Carrera carrera, @Param("estudiante") Estudiante estudiante);
 
-//    @Query("SELECT DISTINCT c FROM EstudianteCarrera ec JOIN Carrera c ON (ec.carrera.idCarrera=c.idCarrera) GROUP BY c.idCarrera ORDER BY COUNT(ec.carrera) DESC")
-//    Iterable<Carrera> buscarCarrerasPorNroInscriptos();
-
-    @Query("SELECT c.idCarrera, c.nombre, COUNT(ec.carrera.idCarrera) as cantidadEstudiantes " +
-            "FROM EstudianteCarrera ec " +
-            "JOIN Carrera c ON (ec.carrera.idCarrera=c.idCarrera)" +
-            "GROUP BY c.idCarrera " +
-            "ORDER BY COUNT(ec.carrera.idCarrera) DESC")
+    @Query("SELECT c, COUNT(ec) AS cantidadEstudiantes " +
+            "FROM Carrera c " +
+            "JOIN c.estudiantes ec " +
+            "GROUP BY c " +
+            "HAVING COUNT(ec) > 0 " +
+            "ORDER BY cantidadEstudiantes DESC")
     List<Object[]> buscarCarrerasPorNroInscriptos();
 
 }
