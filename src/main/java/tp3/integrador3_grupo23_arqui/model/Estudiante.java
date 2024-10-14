@@ -47,19 +47,6 @@ public class Estudiante {
     @JsonIgnore
     private List<EstudianteCarrera> carreras;/*Un estudiante tiene 1 o + carreras cursadas*/
                 /*Tipo EstudianteCarrera, ya que es la tabla realacion*/
-//    public Estudiante(String nombre, String apellido, int edad, String genero, int DNI, Long numLegajo, String ciudad, int antiguedadEnCarrera) {
-//        this.nombre = nombre;
-//        this.apellido = apellido;
-//        this.edad = edad;
-//        this.genero = genero;
-//        this.DNI = DNI;
-//        this.numLegajo = numLegajo;
-//        this.ciudad = ciudad;
-//        this.antiguedadEnCarrera = antiguedadEnCarrera;
-//        this.carreras = new ArrayList<>();
-//    }
-//
-//    public Estudiante() {}
 
     public int getAntiguedadEnCarrera() {
         return antiguedadEnCarrera;

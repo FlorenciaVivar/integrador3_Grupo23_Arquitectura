@@ -1,6 +1,8 @@
 package tp3.integrador3_grupo23_arqui.controller;
 
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +14,7 @@ import tp3.integrador3_grupo23_arqui.service.EstudianteCarreraService;
 @RestController
 @RequestMapping("/estudianteCarrera")
 public class EstudianteCarreraControllerJpa {
-
+    @Autowired
     private EstudianteCarreraService estudianteCarreraService;
 
     //(b)matricular un estudiante en una carrera
