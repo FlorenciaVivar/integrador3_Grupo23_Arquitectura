@@ -16,6 +16,7 @@ import tp3.integrador3_grupo23_arqui.repository.EstudianteRepository;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class EstudianteCarreraServiceImpl implements EstudianteCarreraService{
@@ -114,6 +115,10 @@ public class EstudianteCarreraServiceImpl implements EstudianteCarreraService{
 
     @Override
     public List<CarreraReporteDTO> getReportes() {
-        return this.repository.getReportes();
+        List<CarreraReporteDTO> reportes = this.repository.getReportes();
+        if (reportes.isEmpty()) {
+            throw new NoSuchElementException("No se encontraron reportes disponibles.");
+        }
+        return reportes;
     }
 }
