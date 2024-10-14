@@ -3,9 +3,7 @@ package tp3.integrador3_grupo23_arqui.service;
 import tp3.integrador3_grupo23_arqui.dto.CarreraCantEstudianteDTO;
 import tp3.integrador3_grupo23_arqui.dto.CarreraReporteDTO;
 import tp3.integrador3_grupo23_arqui.dto.EstudianteCarreraRequestDTO;
-import tp3.integrador3_grupo23_arqui.model.Carrera;
 import tp3.integrador3_grupo23_arqui.model.EstudianteCarrera;
-
 import java.util.List;
 
 public interface EstudianteCarreraService {
@@ -22,4 +20,5 @@ public interface EstudianteCarreraService {
     List<CarreraCantEstudianteDTO> buscarCarrerasPorNroInscriptos();
 
     List<CarreraReporteDTO> getReportes();
+
 }

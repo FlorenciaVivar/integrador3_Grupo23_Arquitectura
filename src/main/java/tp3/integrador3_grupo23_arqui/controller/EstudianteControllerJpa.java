@@ -1,4 +1,5 @@
 package tp3.integrador3_grupo23_arqui.controller;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,7 @@ public class EstudianteControllerJpa {
     @Autowired
     private EstudianteCarreraService estudianteCarreraService;
 
-    //GET todos los estudiantes
+    //Extra: Obtener todos los estudiantes registrados
     @GetMapping("")
     @ResponseStatus(HttpStatus.OK)
     public Iterable<Estudiante> getEstudiantes() {
@@ -50,16 +51,17 @@ public class EstudianteControllerJpa {
         return ResponseEntity.ok(this.estudianteCarreraService.findByCarreraAndCiudad(idCarrera,ciudad));
     }
 
+    //Extra: Obtener todos los estudiantes con el mismo nombre
     @GetMapping("/{nombre}")
     public Iterable<Estudiante> getEstudiantePorNombre(@PathVariable("nombre") String nombre){
         return estudianteService.buscarEstudiantePorNombre(nombre);
     }
-
+    //Extra: Modificar un estudiante
     @PutMapping("/{id}")
     public Estudiante updateEstudiante(@PathVariable Integer id, @RequestBody Estudiante estudiante) {
-        Estudiante estudianteActualizado = estudianteService.actualizarEstudiante(id,estudiante);
-        return estudianteActualizado;
+        return estudianteService.actualizarEstudiante(id,estudiante);
     }
+    //Extra: Eliminar un estudiante
     @DeleteMapping("/{id}")
     public void deleteEstudiante(@PathVariable("id") Integer idEstudiante) {
         estudianteService.eliminarEstudiante(idEstudiante);

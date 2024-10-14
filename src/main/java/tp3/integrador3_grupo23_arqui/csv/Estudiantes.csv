@@ -1,11 +1,11 @@
 nombre,apellido,edad,genero,dni,numLegajo,ciudad,antiguedadEnCarrera
-Juan,Perez,22,M,12345678,1001,Buenos Aires,3
+Juan,Perez,22,M,12345678,1001,Cordoba,3
 Maria,Gonzalez,21,F,87654321,1002,Cordoba,2
 Carlos,Lopez,24,M,23456789,1003,Mendoza,4
 Ana,Martinez,23,F,34567890,1004,Rosario,5
-Luis,Garcia,20,M,45678901,1005,La Plata,1
+Luis,Garcia,20,M,45678901,1005,Cordoba,1
 Sofia,Diaz,25,F,56789012,1006,Salta,6
-Diego,Fernandez,22,M,67890123,1007,Neuquen,3
+Diego,Fernandez,22,M,67890123,1007,Cordoba,3
 Valentina,Ruiz,21,F,78901234,1008,Tucuman,2
-Pablo,Gomez,23,M,89012345,1009,Santa Fe,4
-Lucia,Molina,24,F,90123456,1010,Mar del Plata,5
+Juan,Gomez,23,M,89012345,1009,Santa Fe,4
+Lucia,Molina,24,F,90123456,1010,Tandil,5

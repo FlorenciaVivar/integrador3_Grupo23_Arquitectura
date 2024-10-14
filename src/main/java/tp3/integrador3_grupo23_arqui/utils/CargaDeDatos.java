@@ -16,7 +16,6 @@ import tp3.integrador3_grupo23_arqui.repository.EstudianteRepository;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.time.LocalDate;
 
 @Component
 public class CargaDeDatos {
@@ -84,24 +83,19 @@ public class CargaDeDatos {
             for (CSVRecord csvRecord : csvParser) {
                 EstudianteCarrera ec = new EstudianteCarrera();
 
-                // Obtén el id de la carrera y el estudiante
                 Integer idCarrera = Integer.parseInt(csvRecord.get("id_carrera"));
                 Integer idEstudiante = Integer.parseInt(csvRecord.get("id_estudiante"));
 
-                // Busca las entidades Carrera y Estudiante
                 Carrera carrera = carreraRepository.findById(idCarrera).orElseThrow(() -> new RuntimeException("Carrera no encontrada"));
                 Estudiante estudiante = estudianteRepository.findById(idEstudiante).orElseThrow(() -> new RuntimeException("Estudiante no encontrado"));
 
-                // Asigna las entidades a la relación EstudianteCarrera
                 ec.setCarrera(carrera);
                 ec.setEstudiante(estudiante);
 
-                // Asigna las demás propiedades (fechas como enteros)
                 ec.setFechaComienzo(Integer.parseInt(csvRecord.get("inscripcion")));  // Fecha de inscripción como int
                 ec.setEstaGraduado(csvRecord.get("graduacion") != null);              // Si tiene fecha de graduación, está graduado
                 ec.setFechaGraduacion(csvRecord.get("graduacion") != null ? Integer.parseInt(csvRecord.get("graduacion")) : 0);  // Si no hay fecha de graduación, asigna 0
 
-                // Guarda en la base de datos
                 estudianteCarreraRepository.save(ec);
             }
         } catch (IOException e) {

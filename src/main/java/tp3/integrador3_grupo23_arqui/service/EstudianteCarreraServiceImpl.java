@@ -1,7 +1,9 @@
 package tp3.integrador3_grupo23_arqui.service;
 
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 import tp3.integrador3_grupo23_arqui.dto.CarreraCantEstudianteDTO;
 import tp3.integrador3_grupo23_arqui.dto.CarreraReporteDTO;
 import tp3.integrador3_grupo23_arqui.dto.EstudianteCarreraRequestDTO;
@@ -11,7 +13,6 @@ import tp3.integrador3_grupo23_arqui.model.EstudianteCarrera;
 import tp3.integrador3_grupo23_arqui.repository.CarreraRepository;
 import tp3.integrador3_grupo23_arqui.repository.EstudianteCarreraRepository;
 import tp3.integrador3_grupo23_arqui.repository.EstudianteRepository;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,9 +57,13 @@ public class EstudianteCarreraServiceImpl implements EstudianteCarreraService{
 
     @Override
     public void create(EstudianteCarreraRequestDTO ecDTO) {
-        Carrera carrera = this.carreraRepository.findById(ecDTO.getIdCarrera()).orElseThrow(() -> new RuntimeException(""));
 
-        Estudiante estudiante = this.estudianteRepository.findById(ecDTO.getIdEstudiante()).orElseThrow(() -> new RuntimeException(""));
+        if (ecDTO == null || ecDTO.getIdEstudiante() == null || ecDTO.getIdCarrera() == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Los datos del estudiante o de la carrera son inválidos.");
+        }
+
+        Carrera carrera = this.carreraRepository.findById(ecDTO.getIdCarrera()).orElseThrow(() ->  new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontró la carrera con ID: " + ecDTO.getIdCarrera()));
+        Estudiante estudiante = this.estudianteRepository.findById(ecDTO.getIdEstudiante()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontró el estudiante con ID: " + ecDTO.getIdEstudiante()));
 
         EstudianteCarrera request = EstudianteCarrera
                 .builder()
@@ -87,11 +92,6 @@ public class EstudianteCarreraServiceImpl implements EstudianteCarreraService{
     public Iterable<EstudianteCarrera> findByCarreraAndCiudad(int idCarrera, String ciudad) {
         return repository.findEstudiantesByCarreraAndCiudad(idCarrera,ciudad);
     }
-
-    //    @Override
-    //    public Iterable<Carrera> buscarCarrerasPorNroInscriptos() {
-    //        return this.repository.buscarCarrerasPorNroInscriptos();
-    //    }
 
     @Override
     public List<CarreraCantEstudianteDTO> buscarCarrerasPorNroInscriptos() {

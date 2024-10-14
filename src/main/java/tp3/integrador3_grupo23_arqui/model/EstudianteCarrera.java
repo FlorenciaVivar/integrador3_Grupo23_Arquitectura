@@ -3,8 +3,6 @@ package tp3.integrador3_grupo23_arqui.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
-
 import static jakarta.persistence.GenerationType.AUTO;
 
 @Entity

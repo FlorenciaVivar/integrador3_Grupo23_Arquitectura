@@ -7,7 +7,6 @@ import tp3.integrador3_grupo23_arqui.dto.CarreraReporteDTO;
 import tp3.integrador3_grupo23_arqui.model.Carrera;
 import tp3.integrador3_grupo23_arqui.model.Estudiante;
 import tp3.integrador3_grupo23_arqui.model.EstudianteCarrera;
-
 import java.util.List;
 import java.util.Optional;
 

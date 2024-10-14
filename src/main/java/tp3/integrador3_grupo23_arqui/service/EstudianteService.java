@@ -33,12 +33,13 @@ public class EstudianteService {
     public Iterable<Estudiante> buscarEstudiantesPorGenero(String genero){
         return estudianteRepository.buscarEstudiantesPorGenero(genero.toUpperCase());
     }
-
+    //Extra: Modificar un estudiante
     public Estudiante actualizarEstudiante(Integer idEstudiante, Estudiante estudiante){
         estudiante.setIdEstudiante(idEstudiante);
         return estudianteRepository.save(estudiante);
     }
 
+    //Extra: Eliminar un estudiante
     @Transactional
     public void eliminarEstudiante(Integer idEstudiante){
         estudianteRepository.deleteById(idEstudiante);

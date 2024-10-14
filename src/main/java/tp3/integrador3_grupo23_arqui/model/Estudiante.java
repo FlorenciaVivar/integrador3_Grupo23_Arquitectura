@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
 @Entity
 @Table(name = "estudiante")
@@ -44,7 +43,7 @@ public class Estudiante {
 
     @Column (nullable = false)
 
-    @OneToMany(mappedBy = "estudiante")
+    @OneToMany(mappedBy = "estudiante", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<EstudianteCarrera> carreras;/*Un estudiante tiene 1 o + carreras cursadas*/
                 /*Tipo EstudianteCarrera, ya que es la tabla realacion*/

@@ -2,8 +2,6 @@ package tp3.integrador3_grupo23_arqui.dto;
 
 import lombok.*;
 
-import java.time.LocalDate;
-
 @Data
 @NoArgsConstructor
 public class CarreraReporteDTO {
