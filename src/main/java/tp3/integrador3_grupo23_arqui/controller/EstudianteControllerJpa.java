@@ -50,8 +50,6 @@ public class EstudianteControllerJpa {
         return ResponseEntity.ok(this.estudianteCarreraService.findByCarreraAndCiudad(idCarrera,ciudad));
     }
 
-
-
     @GetMapping("/{nombre}")
     public Iterable<Estudiante> getEstudiantePorNombre(@PathVariable("nombre") String nombre){
         return estudianteService.buscarEstudiantePorNombre(nombre);

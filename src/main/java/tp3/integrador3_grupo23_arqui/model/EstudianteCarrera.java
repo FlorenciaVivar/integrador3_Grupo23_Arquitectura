@@ -3,7 +3,8 @@ package tp3.integrador3_grupo23_arqui.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
+import java.util.Date;
+
 import static jakarta.persistence.GenerationType.AUTO;
 
 @Entity
@@ -35,17 +36,8 @@ public class EstudianteCarrera {
     private boolean estaGraduado;
 
     @Column(nullable = true)
+    @Temporal(TemporalType.DATE)
     private int fechaGraduacion;
-
-//    public EstudianteCarrera(){}
-
-//    public EstudianteCarrera(Carrera carrera, Estudiante estudiante, LocalDate fechaComienzo, boolean estaGraduado, LocalDate fechaGraduacion) {
-//        this.carrera = carrera;
-//        this.estudiante = estudiante;
-//        this.fechaComienzo = fechaComienzo;
-//        this.estaGraduado = estaGraduado;
-//        this.fechaGraduacion = fechaGraduacion;
-//    }
 
     public Integer getIdEstudianteCarrera(){
         return this.idEstudianteCarrera;

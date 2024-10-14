@@ -1,6 +1,7 @@
 package tp3.integrador3_grupo23_arqui.service;
 
 import tp3.integrador3_grupo23_arqui.dto.CarreraCantEstudianteDTO;
+import tp3.integrador3_grupo23_arqui.dto.CarreraReporteDTO;
 import tp3.integrador3_grupo23_arqui.dto.EstudianteCarreraRequestDTO;
 import tp3.integrador3_grupo23_arqui.model.Carrera;
 import tp3.integrador3_grupo23_arqui.model.EstudianteCarrera;
@@ -19,4 +20,6 @@ public interface EstudianteCarreraService {
     Iterable<EstudianteCarrera> findByCarreraAndCiudad(int idCarrera, String ciudad);
 
     List<CarreraCantEstudianteDTO> buscarCarrerasPorNroInscriptos();
+
+    List<CarreraReporteDTO> getReportes();
 }

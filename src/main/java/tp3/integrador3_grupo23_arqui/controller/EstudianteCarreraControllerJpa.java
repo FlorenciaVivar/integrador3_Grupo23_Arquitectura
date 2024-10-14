@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import tp3.integrador3_grupo23_arqui.dto.CarreraReporteDTO;
 import tp3.integrador3_grupo23_arqui.dto.EstudianteCarreraRequestDTO;
 import tp3.integrador3_grupo23_arqui.model.Carrera;
 import tp3.integrador3_grupo23_arqui.model.EstudianteCarrera;
@@ -43,6 +44,8 @@ public class EstudianteCarreraControllerJpa {
         return ResponseEntity.ok(estudiantesCarrera);
     }
 
-
-
+    @GetMapping("/reportes")
+    public List<CarreraReporteDTO> getReportes(){
+        return this.estudianteCarreraService.getReportes();
+    }
 }

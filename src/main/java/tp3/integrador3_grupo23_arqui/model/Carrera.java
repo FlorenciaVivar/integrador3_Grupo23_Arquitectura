@@ -25,12 +25,6 @@ public class Carrera {
     @JsonIgnore
     private List<EstudianteCarrera> estudiantes;
 
-//    public Carrera(){}
-//
-//    public Carrera(String nombre){
-//        this.nombre = nombre;
-//        this.estudiantes = new ArrayList<>();
-//    }
     public Integer getIdCarrera() {
         return idCarrera;
     }

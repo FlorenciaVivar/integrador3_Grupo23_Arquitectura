@@ -3,6 +3,7 @@ package tp3.integrador3_grupo23_arqui.service;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import tp3.integrador3_grupo23_arqui.dto.CarreraCantEstudianteDTO;
+import tp3.integrador3_grupo23_arqui.dto.CarreraReporteDTO;
 import tp3.integrador3_grupo23_arqui.dto.EstudianteCarreraRequestDTO;
 import tp3.integrador3_grupo23_arqui.model.Carrera;
 import tp3.integrador3_grupo23_arqui.model.Estudiante;
@@ -111,4 +112,8 @@ public class EstudianteCarreraServiceImpl implements EstudianteCarreraService{
         return carrerasDTO;
     }
 
+    @Override
+    public List<CarreraReporteDTO> getReportes() {
+        return this.repository.getReportes();
+    }
 }

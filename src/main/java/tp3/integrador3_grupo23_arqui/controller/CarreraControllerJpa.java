@@ -40,6 +40,4 @@ public class CarreraControllerJpa {
         List<CarreraCantEstudianteDTO> carreras = estudianteCarreraService.buscarCarrerasPorNroInscriptos();
         return ResponseEntity.ok(carreras);
     }
-
-
 }
